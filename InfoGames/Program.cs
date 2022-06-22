@@ -1,6 +1,8 @@
 using InfoGames.WebAPI.Data.DbContexts;
 using InfoGames.WebAPI.Infrastructure.Managers;
 using InfoGames.WebAPI.Infrastructure.Managers.Interfaces;
+using InfoGames.WebAPI.Infrastructure.Providers;
+using InfoGames.WebAPI.Infrastructure.Providers.Interfaces;
 using InfoGames.WebAPI.Infrastructure.Repositories;
 using InfoGames.WebAPI.Infrastructure.Repositories.Base;
 using InfoGames.WebAPI.Models;
@@ -24,6 +26,7 @@ options.UseSqlServer(
      builder.Configuration.GetConnectionString("GameDbConnection")));
 
 builder.Services.AddTransient<IRepository<GameModel>, GameRepository>();
+builder.Services.AddTransient<IGameProvider, GameProvider>();
 builder.Services.AddTransient<IGameManager, GameManager>();
 
 var app = builder.Build();

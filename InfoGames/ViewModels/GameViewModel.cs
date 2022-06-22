@@ -2,7 +2,7 @@
 
 namespace InfoGames.WebAPI.ViewModels;
 
-public class GameModelViewModel
+public class GameViewModel
 {
     /// <summary>
     /// Идентификатор
