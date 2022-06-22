@@ -1,4 +1,4 @@
-﻿using InfoGames.WebAPI.ViewModels;
+﻿using InfoGames.WebAPI.Models;
 
 namespace InfoGames.WebAPI.Infrastructure.Providers.Interfaces;
 
@@ -8,11 +8,11 @@ public interface IGameProvider
     /// Получить список всех игр
     /// </summary>
     /// <returns></returns>
-    IQueryable<GameViewModel> GetAll();
+    IQueryable<GameModel> GetAll();
 
     /// <summary>
     /// Получить список игр определенного жанра
     /// </summary>
     /// <returns></returns>
-    IQueryable<GameViewModel>? GetGamesOfGenreAsync(string genre);
+    IQueryable<GameModel> GetGamesOfGenre(string genre);
 }

@@ -1,6 +1,6 @@
 ﻿using InfoGames.WebAPI.Data.DbContexts;
 using InfoGames.WebAPI.Infrastructure.Providers.Interfaces;
-using InfoGames.WebAPI.ViewModels;
+using InfoGames.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfoGames.WebAPI.Infrastructure.Providers;
@@ -16,33 +16,19 @@ public class GameProvider : IGameProvider
         _logger = logger;
     }
 
-    public IQueryable<GameViewModel> GetAll()
+    public IQueryable<GameModel> GetAll()
     {
-        IQueryable<GameViewModel> result = _dbContext.Games
-            .AsNoTracking()
-            .Select(x => new GameViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                StudioDeveloper = x.StudioDeveloper,
-                Genres = x.Genres.Split(',', StringSplitOptions.None).ToList()
-            });
+        IQueryable<GameModel> result = _dbContext.Games
+            .AsNoTracking();
 
         return result;
     }
 
-    public IQueryable<GameViewModel>? GetGamesOfGenreAsync(string genre)
+    public IQueryable<GameModel> GetGamesOfGenre(string genre)
     {
-        IQueryable<GameViewModel> result = _dbContext.Games
+        IQueryable<GameModel> result = _dbContext.Games
             .AsNoTracking()
-            .Where(x => x.Genres.Contains(genre, StringComparison.OrdinalIgnoreCase))
-            .Select(x => new GameViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                StudioDeveloper = x.StudioDeveloper,
-                Genres = x.Genres.Split(',', StringSplitOptions.None).ToList()
-            });
+            .Where(x => x.Genres.Contains(genre, StringComparison.OrdinalIgnoreCase));
 
         return result;
     }
