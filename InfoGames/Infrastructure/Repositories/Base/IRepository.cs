@@ -32,5 +32,5 @@ public interface IRepository<TEntity>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<TEntity?> DeleteAsync(Guid id);
+    Task<bool> DeleteAsync(Guid id);
 }
