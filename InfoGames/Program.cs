@@ -1,3 +1,4 @@
+using InfoGames.Data.DbInitializers;
 using InfoGames.WebAPI.Data.DbContexts;
 using InfoGames.WebAPI.Infrastructure.Managers;
 using InfoGames.WebAPI.Infrastructure.Managers.Interfaces;
@@ -31,9 +32,12 @@ builder.Services.AddTransient<IGameManager, GameManager>();
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -43,5 +47,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//database initialization
+Task.Run(async () => await GamesDbInit.SeedAsync(app.Services));
 
 app.Run();
