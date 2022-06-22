@@ -2,6 +2,7 @@
 using InfoGames.WebAPI.Infrastructure.Providers.Interfaces;
 using InfoGames.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace InfoGames.WebAPI.Infrastructure.Providers;
 
@@ -28,7 +29,7 @@ public class GameProvider : IGameProvider
     {
         IQueryable<GameModel> result = _dbContext.Games
             .AsNoTracking()
-            .Where(x => x.Genres.Contains(genre, StringComparison.OrdinalIgnoreCase));
+            .Where(x => x.Genres.Contains(genre));
 
         return result;
     }

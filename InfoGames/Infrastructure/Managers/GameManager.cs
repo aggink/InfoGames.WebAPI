@@ -26,8 +26,8 @@ public class GameManager : IGameManager
             Id = Guid.NewGuid(),
             Name = model.Name,
             StudioDeveloper = model.StudioDeveloper,
-            Genres = string.Join(",", model.Genres)
-        };
+            Genres = string.Join(",", model.Genres).Replace(" ", "")
+    };
 
         var result = await _repository.CreateAsync(entity);
         if (result == null) return false;
@@ -42,8 +42,8 @@ public class GameManager : IGameManager
             Id = model.Id,
             Name = model.Name,
             StudioDeveloper = model.StudioDeveloper,
-            Genres = string.Join(",", model.Genres)
-        };
+            Genres = string.Join(",", model.Genres).Replace(" ", "")
+    };
 
         var result = await _repository.UpdateAsync(entity);
         if (result == null) return false;
