@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 namespace InfoGames.Data.DbInitializers;
 
 /// <summary>
-/// Класс отвечающий за инициализация БД начальными данными
+/// Класс отвечающий за инициализацию БД начальными данными
 /// </summary>
 public static class GamesDbInit
 {

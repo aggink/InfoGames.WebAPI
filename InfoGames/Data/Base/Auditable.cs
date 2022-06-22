@@ -1,6 +1,9 @@
 ﻿namespace InfoGames.WebAPI.Data.Base;
 
-public class Auditable : IGuid
+/// <summary>
+/// Базовые поля сущности
+/// </summary>
+public abstract class Auditable : IGuid
 {
     public Guid Id { get; set; }
 }
