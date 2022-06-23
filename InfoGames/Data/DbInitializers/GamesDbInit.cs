@@ -40,7 +40,7 @@ public static class GamesDbInit
                 Id = Guid.NewGuid(),
                 Name = "Subway Surfers",
                 StudioDeveloper = "SYBO Games",
-                Genres = "Платформер, Endless Running"
+                Genres = "Платформер,Endless Running"
             },
             new GameModel()
             {
@@ -54,21 +54,21 @@ public static class GamesDbInit
                 Id = Guid.NewGuid(),
                 Name = "Geometry Dash",
                 StudioDeveloper = "RobTop Games",
-                Genres = "Инди-игра, Action"
+                Genres = "Инди-игра,Action"
             },
             new GameModel()
             {
                 Id = Guid.NewGuid(),
                 Name = "Tomb Raider",
                 StudioDeveloper = "Crystal Dynamics",
-                Genres = "Action-adventure, Action, RPG, Survival horror, Adventure"
+                Genres = "Action-adventure,Action,RPG,Survival horror,Adventure"
             },
             new GameModel()
             {
                 Id = Guid.NewGuid(),
                 Name = "Genshin Impact",
                 StudioDeveloper = "COGNOSPHERE PTE. LTD.",
-                Genres = "Action, RPG, Квест"
+                Genres = "Action,RPG,Квест"
             },
             new GameModel()
             {
@@ -81,7 +81,6 @@ public static class GamesDbInit
 
         for(int i = 0; i < models.Count; i++)
         {
-            models[i].Genres = models[i].Genres.Replace(" ", "");
             await gameRepository.CreateAsync(models[i]);
         }
 
