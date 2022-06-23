@@ -10,13 +10,11 @@ public class GameManager : IGameManager
 {
     private readonly IRepository<GameModel> _repository;
     private readonly IGameProvider _provider;
-    private readonly ILogger<GameManager> _logger;
 
-    public GameManager(IRepository<GameModel> repository, IGameProvider provider, ILogger<GameManager> logger)
+    public GameManager(IRepository<GameModel> repository, IGameProvider provider)
     {
         _repository = repository;
         _provider = provider;
-        _logger = logger;
     }
 
     public async Task<bool> CreateAsync(CreateGameViewModel model)
@@ -26,7 +24,7 @@ public class GameManager : IGameManager
             Id = Guid.NewGuid(),
             Name = model.Name,
             StudioDeveloper = model.StudioDeveloper,
-            Genres = string.Join(",", model.Genres).Replace(" ", "")
+            Genres = string.Join(",", model.Genres.Select(x => x.Trim(' ')))
     };
 
         var result = await _repository.CreateAsync(entity);
@@ -42,8 +40,8 @@ public class GameManager : IGameManager
             Id = model.Id,
             Name = model.Name,
             StudioDeveloper = model.StudioDeveloper,
-            Genres = string.Join(",", model.Genres).Replace(" ", "")
-    };
+            Genres = string.Join(",", model.Genres.Select(x => x.Trim(' ')))
+        };
 
         var result = await _repository.UpdateAsync(entity);
         if (result == null) return false;

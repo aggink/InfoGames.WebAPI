@@ -9,12 +9,10 @@ namespace InfoGames.WebAPI.Infrastructure.Providers;
 public class GameProvider : IGameProvider
 {
     private readonly GamesDbContext _dbContext;
-    private readonly ILogger<GameProvider> _logger;
 
-    public GameProvider(GamesDbContext dbContext, ILogger<GameProvider> logger)
+    public GameProvider(GamesDbContext dbContext)
     {
         _dbContext = dbContext;
-        _logger = logger;
     }
 
     public IQueryable<GameModel> GetAll()
