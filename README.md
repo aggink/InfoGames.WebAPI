@@ -9,6 +9,7 @@
 * получение списка игр по заданному жанру.
 
 ## Пример добавления данных об игре:
+```json
 {
   "name": "Subway Surfers",
     "studioDeveloper": "SYBO Games",
@@ -17,3 +18,4 @@
       "EndlessRunning"
     ]
 }
+```
